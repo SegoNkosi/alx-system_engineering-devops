@@ -88,3 +88,46 @@ Displays Buzz when the number is a multiple of 5
 Otherwise, displays the number
 In a list format
 ................................................................................
+Write a Bash script that displays the content of the file /etc/passwd.
+
+Your script should only display:
+
+username
+user id
+Home directory path for the user
+Requirements:
+
+You must use the while loop (for and until are forbidden)
+...............................................................................
+Write a Bash script that displays the content of the file /etc/passwd, using the while loop + IFS.
+
+Format: The user USERNAME is part of the GROUP_ID gang, lives in HOME_DIRECTORY and rides COMMAND/SHELL. USER ID's place is protected by the passcode PASSWORD, more info about the user here: USER ID INFO
+
+Requirements:
+
+You must use the while loop (for and until are forbidden)
+.............................................................................................
+Write a Bash script that displays the visitor IP along with the HTTP status code from the Apache log file.
+
+Requirement:
+
+Format: IP HTTP_CODE
+in a list format
+See example
+You must use awk
+You are not allowed to use while, for, until and cut
+Download and commit the apache-access.log file along with your answers files
+..................................................................
+Using what you did in the previous exercise, write a Bash script that groups visitors by IP and HTTP status code, and displays this data.
+
+Requirements:
+
+The exact format must be:
+OCCURENCE_NUMBER IP HTTP_CODE
+In list format
+Ordered from the greatest to the lowest number of occurrences
+See example
+You must use awk
+You are not allowed to use while, for, until and cut
+..........................................................................................................
+
