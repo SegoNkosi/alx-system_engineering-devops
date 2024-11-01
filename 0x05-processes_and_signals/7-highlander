@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#a Bash script that displays
+
+# Trap the SIGTERM signal and terminate the process
+trap 'echo "I am invincible!!!"' SIGTERM
+
+while true; do
+	echo "To infinity and beyond"
+	sleep 2
+done
