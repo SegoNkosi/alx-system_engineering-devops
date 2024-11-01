@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+# a bash script that manages a process
+
+# Path to the manage_my_process script
+# MANAGE_SCRIPT="./manage_my_process"
+
+function error()
+{
+    echo "Usage: manage_my_process {start|stop|restart}"
+}
+
+function start()
+{
+    (./manage_my_process) &
+    echo $! > /var/run/my_process.pid
+    echo "manage_my_process started"
+}
+
+function stop()
+{
+    pkill -TERM "$(cat /var/run/my_process.pid)"
+    sudo rm /var/run/my_process.pid
+    echo "manage_my_process stopped"
+}
+
+function restart()
+{
+    pkill -TERM "$(cat /var/run/my_process.pid)"
+    sudo rm /var/run/my_process.pid
+    sleep 2
+    (./manage_my_process) &
+    echo $! > /var/run/my_process.pid
+    echo "manage_my_process restarted"
+}
+
+if [ $# -ne 1 ];
+then
+    error
+else
+    case ${1} in
+    	"start")
+    	    start;;
+    	"restart")
+    	    restart;;
+    	"stop")
+    	    stop;;
+    	*)
+    	    error;;
+    esac
+fi
