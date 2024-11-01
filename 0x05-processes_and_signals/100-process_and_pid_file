@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# Using SIGNALS and management with processes.
+
+# Display the PID and create the PID file
+echo $$ > /var/run/myscript.pid
+
+# Function to handle SIGTERM signal
+terminate() {
+    echo "I hate the kill command"
+    cleanup_and_exit
+}
+
+# Function to handle SIGINT signal
+interrupt() {
+    echo "Y U no love me?!"
+}
+
+# Function to handle SIGQUIT signal
+quit() {
+    cleanup_and_exit
+}
+
+# Function to clean up and exit
+cleanup_and_exit() {
+    rm -f /var/run/myscript.pid
+    exit 0
+}
+
+# Trap signals and associate them with corresponding functions
+trap terminate SIGTERM
+trap interrupt SIGINT
+trap quit SIGQUIT
+
+# Display messages indefinitely
+while true
+do
+    echo "To infinity and beyond"
+    sleep 2
+done
